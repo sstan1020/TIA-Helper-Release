@@ -1,0 +1,4 @@
+{
+  "free": { "limit": 10, "windowHours": 1 },
+  "hardware": { "limit": 500, "windowHours": 1 }
+}
