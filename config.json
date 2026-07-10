@@ -1,4 +1,5 @@
 {
-  "free": { "limit": 10, "windowHours": 1 },
-  "hardware": { "limit": 500, "windowHours": 1 }
+  "free": { "limit": 10, "windowHours": 1, "monthlyLimit": 50, "monthlyWindowHours": 720 },
+  "hardware": { "limit": 500, "windowHours": 1, "monthlyLimit": 3000, "monthlyWindowHours": 720 },
+  "whitelist": ["49D7F-C09CA-72F37-93F17"]
 }
