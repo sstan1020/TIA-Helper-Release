@@ -1,5 +1,6 @@
 {
   "free": { "limit": 10, "windowHours": 1, "dailyLimit": 20, "dailyWindowHours": 24, "weeklyLimit": 50, "weeklyWindowHours": 168 },
   "hardware": { "limit": 100, "windowHours": 1, "dailyLimit": 200, "dailyWindowHours": 24, "weeklyLimit": 500, "weeklyWindowHours": 168 },
-  "whitelist": ["49D7F-C09CA-72F37-93F17"]
+  "whitelist": ["49D7F-C09CA-72F37-93F17"],
+  "minVersion": "1.0.0"
 }
