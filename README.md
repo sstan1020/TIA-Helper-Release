@@ -191,6 +191,10 @@ try this.
 **Downloading to hardware is always a manual step** — an AI assistant can tell you what a
 download would target, but it can never trigger one itself.
 
+📄 See **[docs/NAMED_PIPE.md](docs/NAMED_PIPE.md)** for the full command reference,
+example scripts, and safety rules — point your AI assistant at that file and it can
+learn the whole protocol in one read.
+
 </details>
 
 ## 🔑 License
