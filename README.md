@@ -30,8 +30,9 @@ installer needed. TIA Portal must be installed on the same machine.
 
 ## License
 
-Free to use. Right-click the floating icon and choose **License code...** to get your
-hardware code, then follow the instructions to request a license.
+Free to use under the terms in [LICENSE.md](LICENSE.md). Right-click the floating icon
+and choose **License code...** to get your hardware code, then follow the instructions
+to request a license.
 
 ## Source
 
