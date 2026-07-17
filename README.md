@@ -28,6 +28,11 @@ AI do it for you through the exact same interface a human uses.
 Grab the latest `TiaWpf.exe` from the [Releases](../../releases) page and run it — no
 installer needed. TIA Portal must be installed on the same machine.
 
+## User guide
+
+See [docs/USER_GUIDE.md](docs/USER_GUIDE.md) for a full walkthrough of the toolbar,
+Export/Import/Custom, Auto mode, and Compile/Download — with screenshots.
+
 ## License
 
 Free to use under the terms in [LICENSE.md](LICENSE.md). Right-click the floating icon
