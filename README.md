@@ -1,8 +1,18 @@
+<p align="center">
+
 # TIA Helper 🚂✨
+
+</p>
 
 ![TIA Helper — the AI bridge to TIA Portal](hero-banner.png)
 
-**The AI bridge to TIA Portal.** TIA Helper is a small floating toolbar that connects
+<p align="center">
+  <img src="https://img.shields.io/badge/PLC-friendly-03A9A4?style=flat-square" alt="PLC friendly" />
+  <img src="https://img.shields.io/badge/AI-native-blueviolet?style=flat-square" alt="AI native" />
+  <img src="https://img.shields.io/badge/made%20with-%E2%98%95%20%2B%20clicking-orange?style=flat-square" alt="made with coffee" />
+</p>
+
+**The AI bridge to TIA Portal.** 🐣 TIA Helper is a small floating toolbar that connects
 Siemens TIA Portal to your AI coding assistant — Claude, GPT, or any tool that can write
 SCL — so you can write, import, and compile PLC program blocks with one click, or let the
 AI do it for you through the exact same interface a human uses. 🤖🔌
@@ -59,6 +69,15 @@ Top to bottom:
 Click the badge once to shrink the whole thing down to just itself:
 
 ![Collapsed toolbar](docs/images/toolbar-collapsed.png)
+
+**Keyboard shortcuts** (work globally, even while TIA Portal is focused): 🎹
+
+| Shortcut | Opens |
+|---|---|
+| `Alt+Z` | Export page |
+| `Alt+X` | Import page |
+| `Alt+C` | Custom Import page |
+| `Ctrl+Alt+I` | Runs Import immediately |
 
 </details>
 
