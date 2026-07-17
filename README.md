@@ -7,21 +7,16 @@ Siemens TIA Portal to your AI coding assistant — Claude, GPT, or any tool that
 SCL — so you can write, import, and compile PLC program blocks with one click, or let the
 AI do it for you through the exact same interface a human uses. 🤖🔌
 
-## What it does
+## ✨ What it does
 
-- 📥 **Import** an SCL file straight into TIA Portal, generating or overwriting the block.
-- 🛠️ **Compile** the PLC software and get a clean error/warning summary back.
-- 📤 **Export** any block or UDT out to an SCL file, so an AI can read your existing code
-  before changing it.
-- 🔁 **Auto mode** — watch a file (or the whole project) and automatically re-import or
-  re-export the moment something changes, no manual clicking required.
-- 🧠 **AI-native** — every button on the toolbar is also a command on a local named pipe.
-  An AI assistant working in your editor can list running TIA Portal instances, attach to
-  the right one, import code, compile, and report back errors — the same loop a human
-  goes through, just automated.
-- 🔒 **Download stays a human decision.** Writing to real hardware always requires a
-  manual click and on-screen confirmation in the app itself — the AI can tell you what a
-  download would target, but it can never trigger one.
+| | |
+|---|---|
+| 📥 **Import** | Drop an SCL file straight into TIA Portal — generates or overwrites the block for you. |
+| 🛠️ **Compile** | One click, clean error/warning summary. No digging through TIA Portal's own UI. |
+| 📤 **Export** | Any block or UDT → a plain SCL file, so an AI can read your code before touching it. |
+| 🔁 **Auto mode** | Watch a file (or the whole project) — the moment something changes, it re-imports/re-exports itself. Zero clicks. |
+| 🧠 **AI-native** | Every button doubles as a pipe command. Your AI assistant can list, attach, import, compile, and report back — the same loop you do, on autopilot. |
+| 🔒 **Downloads stay yours** | Writing to real hardware always needs a manual click + confirmation in the app. The AI can tell you what it *would* do — it can never do it for you. |
 
 ## ⬇️ Download
 
@@ -37,11 +32,12 @@ AI do it for you through the exact same interface a human uses. 🤖🔌
   </a>
 </p>
 
-No installer needed — just run it. TIA Portal must be installed on the same machine. 🎉
+No installer, no fuss — download it, double-click it, done. 🎉 (TIA Portal needs to
+already be installed on the same machine, obviously — TIA Helper doesn't replace it!)
 
 ## 📖 How to use it
 
-Click any section below to expand it.
+A little floating buddy 🚂 with 5 buttons. Tap a section below to peek inside. 👇
 
 <details>
 <summary>🧰 The toolbar</summary>
@@ -178,12 +174,16 @@ download would target, but it can never trigger one itself.
 
 </details>
 
-## License
+## 🔑 License
 
 Free to use under the terms in [LICENSE.md](LICENSE.md). Right-click the floating icon
 and choose **License code...** to get your hardware code, then follow the instructions
 to request a license.
 
-## Source
+## 📦 Source
 
 This repository hosts release builds only. Source code is maintained privately.
+
+---
+
+<p align="center">Made with ☕ and a lot of clicking on TIA Portal's own UI, so you don't have to.</p>
