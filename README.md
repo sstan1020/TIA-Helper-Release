@@ -1,8 +1,8 @@
 # TIA Helper
 
-![TIA Helper — the AI bridge to automation](hero-banner.png)
+![TIA Helper — the AI bridge to TIA Portal](hero-banner.png)
 
-**The AI bridge to automation.** TIA Helper is a small floating toolbar that connects
+**The AI bridge to TIA Portal.** TIA Helper is a small floating toolbar that connects
 Siemens TIA Portal to your AI coding assistant — Claude, GPT, or any tool that can write
 SCL — so you can write, import, and compile PLC program blocks with one click, or let the
 AI do it for you through the exact same interface a human uses.
