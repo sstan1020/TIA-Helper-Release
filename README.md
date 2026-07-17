@@ -1,37 +1,182 @@
-# TIA Helper
+# TIA Helper 🚂✨
 
 ![TIA Helper — the AI bridge to TIA Portal](hero-banner.png)
 
 **The AI bridge to TIA Portal.** TIA Helper is a small floating toolbar that connects
 Siemens TIA Portal to your AI coding assistant — Claude, GPT, or any tool that can write
 SCL — so you can write, import, and compile PLC program blocks with one click, or let the
-AI do it for you through the exact same interface a human uses.
+AI do it for you through the exact same interface a human uses. 🤖🔌
 
 ## What it does
 
-- **Import** an SCL file straight into TIA Portal, generating or overwriting the block.
-- **Compile** the PLC software and get a clean error/warning summary back.
-- **Export** any block or UDT out to an SCL file, so an AI can read your existing code
+- 📥 **Import** an SCL file straight into TIA Portal, generating or overwriting the block.
+- 🛠️ **Compile** the PLC software and get a clean error/warning summary back.
+- 📤 **Export** any block or UDT out to an SCL file, so an AI can read your existing code
   before changing it.
-- **Auto mode** — watch a file (or the whole project) and automatically re-import or
+- 🔁 **Auto mode** — watch a file (or the whole project) and automatically re-import or
   re-export the moment something changes, no manual clicking required.
-- **AI-native** — every button on the toolbar is also a command on a local named pipe.
+- 🧠 **AI-native** — every button on the toolbar is also a command on a local named pipe.
   An AI assistant working in your editor can list running TIA Portal instances, attach to
   the right one, import code, compile, and report back errors — the same loop a human
   goes through, just automated.
-- **Download stays a human decision.** Writing to real hardware always requires a manual
-  click and on-screen confirmation in the app itself — the AI can tell you what a download
-  would target, but it can never trigger one.
+- 🔒 **Download stays a human decision.** Writing to real hardware always requires a
+  manual click and on-screen confirmation in the app itself — the AI can tell you what a
+  download would target, but it can never trigger one.
 
-## Download
+## ⬇️ Download
 
-Grab the latest `TiaWpf.exe` from the [Releases](../../releases) page and run it — no
-installer needed. TIA Portal must be installed on the same machine.
+<p align="center">
+  <a href="https://github.com/sstan1020/TIA-Helper-Release/releases/latest/download/TiaWpf.exe">
+    <img src="https://img.shields.io/badge/⬇️_Download-TiaWpf.exe-2ea44f?style=for-the-badge&labelColor=03A9A4" alt="Download TiaWpf.exe" />
+  </a>
+</p>
 
-## User guide
+<p align="center">
+  <a href="../../releases/latest">
+    <img src="https://img.shields.io/github/v/release/sstan1020/TIA-Helper-Release?label=latest%20version&color=03A9A4" alt="Latest release" />
+  </a>
+</p>
 
-See [docs/USER_GUIDE.md](docs/USER_GUIDE.md) for a full walkthrough of the toolbar,
-Export/Import/Custom, Auto mode, and Compile/Download — with screenshots.
+No installer needed — just run it. TIA Portal must be installed on the same machine. 🎉
+
+## 📖 How to use it
+
+Click any section below to expand it.
+
+<details>
+<summary>🧰 The toolbar</summary>
+
+A small floating column of buttons that stays on top of your other windows.
+
+![Expanded toolbar](docs/images/toolbar-expanded.png)
+
+Top to bottom:
+
+1. **T badge** — drag to move the toolbar around, click (without dragging) to
+   collapse/expand it, right-click for the license/settings menu.
+2. **Usage gauge** — click to see your license tier and how much usage quota is left.
+3. **Export / Import** (one shared slot — shows whichever you used last) — **left-click
+   runs it immediately**, **right-click** opens the picker.
+4. **Auto mode** (the eye 👁️) — left-click toggles it on/off, right-click picks the mode.
+5. **Run** (the checkmark ✔️) — left-click compiles/downloads, right-click for settings.
+
+Click the badge once to shrink the whole thing down to just itself:
+
+![Collapsed toolbar](docs/images/toolbar-collapsed.png)
+
+</details>
+
+<details>
+<summary>🔑 Licensing & settings (right-click the badge)</summary>
+
+![Badge context menu](docs/images/badge-context-menu.png)
+
+- **License code...** — shows your hardware code. Send it to whoever issues your license.
+- **Import license...** — paste in the license file you were sent.
+- **License status...** — opens the usage popup (see below).
+- **Run at Windows startup** — launch TIA Helper automatically when you log in.
+
+</details>
+
+<details>
+<summary>📤 Export — send PLC blocks out to files</summary>
+
+Right-click the Export button to pick which blocks/UDTs to export and where:
+
+![Export popup](docs/images/export-popup.png)
+
+- Check the blocks/UDTs you want in the tree (checking a folder checks everything under
+  it).
+- **Change...** picks the destination folder — TIA Helper auto-creates a subfolder named
+  after your TIA project, so different projects never mix their files.
+- The icons above the tree are **Select all / Clear / Expand all / Collapse all**. The 🔄
+  checkbox syncs your Export selection straight into Import's own selection.
+- Re-exporting only touches blocks that actually changed since the last export — nothing
+  else gets re-written, so re-exporting a big project stays fast.
+- Click the export icon at the bottom to run it right now.
+
+</details>
+
+<details>
+<summary>📥 Import — bring SCL files into TIA Portal</summary>
+
+Same picker, pointed at a local folder instead of your TIA project:
+
+![Import popup](docs/images/import-popup.png)
+
+- Check a file to queue it for import.
+- Left-clicking the toolbar's Import button re-imports whichever file was last active —
+  handy right after editing it in your own editor.
+- **Auto mode** can watch every checked file and re-import automatically the instant you
+  save it.
+
+</details>
+
+<details>
+<summary>🧳 Custom — a second, independent import folder</summary>
+
+Reached via the little toolbox icon inside Export/Import's own popup. Works exactly like
+Import, but remembers its own separate folder — handy for one-off imports that shouldn't
+touch your regular Import destination.
+
+![Custom popup](docs/images/custom-popup.png)
+
+</details>
+
+<details>
+<summary>🔁 Auto mode — hands-free Import/Export</summary>
+
+Right-click the eye icon:
+
+![Auto mode popup](docs/images/auto-mode-popup.png)
+
+- **Off** — nothing runs automatically.
+- **Auto Import only** — watches every file checked in Import's/Custom's tree; the moment
+  one changes on disk, it's re-imported automatically.
+- **Auto Export only** — watches your TIA project file itself; the moment you save in TIA
+  Portal, your saved Export selection is re-exported automatically.
+- **Import + Export** — both at once.
+
+Left-click is a quick on/off switch that remembers whichever mode you picked last.
+
+</details>
+
+<details>
+<summary>▶️ Run — Compile and Download</summary>
+
+Right-click the checkmark button:
+
+![Run button menu](docs/images/run-button-menu.png)
+
+- **Compile only / Download only / Compile then Download** — what left-clicking Run
+  actually does.
+- **Choose download interface...** — pick which PG/PC interface to use, or let TIA Helper
+  auto-search for one that works.
+- **Don't ask before every download** — skips the confirmation dialog. Downloading always
+  writes to real hardware, so leave this on unless you're sure. ⚠️
+
+</details>
+
+<details>
+<summary>📊 License & usage</summary>
+
+![License and usage popup](docs/images/license-usage-popup.png)
+
+</details>
+
+<details>
+<summary>🤝 Working with an AI assistant</summary>
+
+TIA Helper exposes every one of these actions over a local named pipe, so an AI coding
+assistant can drive it exactly like you do by clicking — list running TIA Portal
+instances, attach to the right project, import code it just wrote, compile, and read back
+the result. Ask your AI assistant to check whether TIA Helper is running if you want to
+try this.
+
+**Downloading to hardware is always a manual step** — an AI assistant can tell you what a
+download would target, but it can never trigger one itself.
+
+</details>
 
 ## License
 
