@@ -80,7 +80,6 @@ Click the badge once to shrink the whole thing down to just itself:
 | `Alt+X` | Opens the Import page |
 | `Alt+C` | Opens the Custom Import page |
 | `Alt+D` | Collapses/expands the toolbar |
-| `Ctrl+Alt+I` | Runs Import immediately |
 
 </details>
 

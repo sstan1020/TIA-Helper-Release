@@ -51,6 +51,8 @@ plain-text request/response over a Windows named pipe.
 | `downloadinterfaces` | List available PG/PC interfaces (mode/PC interface/target), indexed | No |
 | `import <path>` | Import an SCL file, generating/overwriting the block | **Yes** |
 | `export <blockName> <destination path>` | Export a block/UDT's source to an SCL file | **Yes** |
+| `exportxml <blockName> <destination .xml path>` | Export ANY block (including LAD/FBD/GRAPH, and know-how-protected blocks) as lossless SimaticML XML — not human-readable, but works where `export` refuses | **Yes** |
+| `exportxmlall <destination root folder>` | Bulk `exportxml` — every block `export` can't handle, in one pass | **Yes** |
 | `compile` | Compile the PLC software, return an error/warning summary | **Yes** |
 | `selectdownloadinterface <index>` | Save which listed interface Download should use (index from `downloadinterfaces`) | **Yes** |
 | `download` | **Always refuses** — see Safety rules below | — |
