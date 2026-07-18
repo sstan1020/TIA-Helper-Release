@@ -24,6 +24,7 @@ AI do it for you through the exact same interface a human uses. 🤖🔌
 | 📥 **Import** | Drop an SCL file straight into TIA Portal — generates or overwrites the block for you. |
 | 🛠️ **Compile** | One click, clean error/warning summary. No digging through TIA Portal's own UI. |
 | 📤 **Export** | Any block or UDT → a plain SCL file, so an AI can read your code before touching it. |
+| 🏷️ **Symbol Tool** | Build a tag template once ("Motor" → Run/Fault/Speed), set an address rule, and generate a whole tag table in one click — no more hand-typing 50 nearly-identical tags. |
 | 🔁 **Auto mode** | Watch a file (or the whole project) — the moment something changes, it re-imports/re-exports itself. Zero clicks. |
 | 🧠 **AI-native** | Every button doubles as a pipe command. Your AI assistant can list, attach, import, compile, and report back — the same loop you do, on autopilot. |
 | 🔒 **Downloads stay yours** | Writing to real hardware always needs a manual click + confirmation in the app. The AI can tell you what it *would* do — it can never do it for you. |
@@ -137,6 +138,23 @@ Import, but remembers its own separate folder — handy for one-off imports that
 touch your regular Import destination.
 
 ![Custom popup](docs/images/custom-popup.png)
+
+</details>
+
+<details>
+<summary>🏷️ Symbol Tool — generate a whole tag table from one template</summary>
+
+For anyone who's ever had to type out `Motor1_Run`, `Motor1_Fault`, `Motor1_Speed`,
+`Motor2_Run`, `Motor2_Fault`... one at a time. Four tabs:
+
+1. **Templates** — define a reusable set of fields once (name suffix, data type, address
+   offset). One "Motor" template can describe every motor in the plant.
+2. **Address Rules** — pick a template, a start address, how far apart each instance
+   should be, and how many to generate. TIA Helper works out every individual address.
+3. **Regex Rules** *(optional)* — paste in a big list of existing names and auto-sort
+   them by which template they match.
+4. **Generate & Preview** — see every tag before anything happens, then either write them
+   straight into the TIA project or export the list as an Excel file.
 
 </details>
 
