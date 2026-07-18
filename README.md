@@ -31,8 +31,8 @@ AI do it for you through the exact same interface a human uses. 🤖🔌
 ## ⬇️ Download
 
 <p align="center">
-  <a href="https://github.com/sstan1020/TIA-Helper-Release/releases/latest/download/TiaWpf.exe">
-    <img src="https://img.shields.io/badge/⬇️_Download-TiaWpf.exe-2ea44f?style=for-the-badge&labelColor=03A9A4" alt="Download TiaWpf.exe" />
+  <a href="https://github.com/sstan1020/TIA-Helper-Release/releases/latest/download/TiaHelper.exe">
+    <img src="https://img.shields.io/badge/⬇️_Download-TiaHelper.exe-2ea44f?style=for-the-badge&labelColor=03A9A4" alt="Download TiaHelper.exe" />
   </a>
 </p>
 
@@ -42,8 +42,9 @@ AI do it for you through the exact same interface a human uses. 🤖🔌
   </a>
 </p>
 
-No installer, no fuss — download it, double-click it, done. 🎉 (TIA Portal needs to
-already be installed on the same machine, obviously — TIA Helper doesn't replace it!)
+No installer, no fuss — download it, double-click it, done. 🎉 (You still need TIA Portal
+itself installed on your computer — this little buddy rides along with it, it doesn't
+replace it!)
 
 ## 📖 How to use it
 
