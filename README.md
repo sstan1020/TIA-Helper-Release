@@ -72,11 +72,12 @@ Click the badge once to shrink the whole thing down to just itself:
 
 **Keyboard shortcuts** (work globally, even while TIA Portal is focused): 🎹
 
-| Shortcut | Opens |
+| Shortcut | Does |
 |---|---|
-| `Alt+Z` | Export page |
-| `Alt+X` | Import page |
-| `Alt+C` | Custom Import page |
+| `Alt+Z` | Opens the Export page |
+| `Alt+X` | Opens the Import page |
+| `Alt+C` | Opens the Custom Import page |
+| `Alt+D` | Collapses/expands the toolbar |
 | `Ctrl+Alt+I` | Runs Import immediately |
 
 </details>
