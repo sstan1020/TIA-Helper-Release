@@ -214,6 +214,11 @@ download would target, but it can never trigger one itself.
 example scripts, and safety rules — point your AI assistant at that file and it can
 learn the whole protocol in one read.
 
+**Prefer MCP?** There's also a ready-made [MCP (Model Context Protocol)](docs/MCP.md)
+server — if your AI client speaks MCP natively (Claude Desktop, Claude Code, etc.), it
+can call TIA Helper's actions as real tools instead of shell commands, with no scripting
+needed on your end. Same underlying protocol, same safety rules, just a different way in.
+
 </details>
 
 ## 🔑 License

@@ -15,6 +15,8 @@ possible here too, except downloading to real hardware (see "Safety rules" below
 
 ### Minimal client (PowerShell)
 
+📥 **[Download tia.ps1](../tia.ps1)** directly from this repo, or copy it yourself:
+
 ```powershell
 param([string]$Command)
 $pipe = New-Object System.IO.Pipes.NamedPipeClientStream(".", "tia_helper", [System.IO.Pipes.PipeDirection]::InOut)

@@ -1,0 +1,13 @@
+{
+  "name": "tiahelper-mcp",
+  "version": "1.0.0",
+  "description": "MCP server exposing TIA Helper's named-pipe protocol to any MCP-compatible AI client",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "tiahelper-mcp": "./index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  }
+}
