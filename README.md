@@ -92,6 +92,8 @@ Click the badge once to shrink the whole thing down to just itself:
 - **Import license...** — paste in the license file you were sent.
 - **License status...** — opens the usage popup (see below).
 - **Run at Windows startup** — launch TIA Helper automatically when you log in.
+- **Show Symbol Tool button** — turn on the 🏷️ tag-table tool (off by default to keep the toolbar tidy).
+- **Sync export selection → import** — when on, whatever you check on the Export page is also copied into the Import page's selection. One global switch that applies to every project.
 
 </details>
 
@@ -154,6 +156,12 @@ For anyone who's ever had to type out `Motor1_Run`, `Motor1_Fault`, `Motor1_Spee
    them by which template they match.
 4. **Generate & Preview** — see every tag before anything happens, then either write them
    straight into the TIA project or export the list as an Excel file.
+
+> 💡 **New here?** Click **🎓 Load Example** on the Templates tab to fill every tab with a
+> complete worked example (Motor + Valve templates, ready-made address rules, and matching
+> regex rules). Try **Generate** right away to see it produce real tags — then edit or clear
+> it and build your own. Everything you build is saved automatically to
+> `symbol-workspace.json` next to the app, and is shared across all your TIA projects.
 
 </details>
 
