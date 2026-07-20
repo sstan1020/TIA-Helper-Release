@@ -237,33 +237,6 @@ needed on your end. Same underlying protocol, same safety rules, just a differen
 
 </details>
 
-## 🆕 Recent updates
-
-<details>
-<summary>See what's changed lately (v1.0.16 → v1.0.24)</summary>
-
-- 🔁 **Two-way sync, 3 modes** — Export ↔ Import selection sync now works both directions,
-  with a proper 3-way mode picker (Off / only-checked / full mirror) in the badge menu
-  instead of a single on/off switch.
-- 🌳 **Export opens instantly** — the block list is cached after your first connect, so
-  right-clicking Export no longer waits on TIA Portal every single time. It quietly
-  refreshes itself in the background, including right after you connect.
-- 🗂️ **Tree remembers what you expanded** — Export/Import/Custom all remember which
-  folders you left open, for as long as the app keeps running (still starts fresh/
-  collapsed the first time you open it after launching TIA Helper).
-- 🎨 **Toolbar colors, unified** — the round Export button now matches Export's own teal
-  color scheme (it used to clash with a leftover red), and Import/Custom's shared button
-  dims the same way Export's does when there's nothing queued yet.
-- 🏷️ **Symbol Tool** got a **🎓 Load Example** button (fills every tab with a complete
-  worked template on demand), a fix for adding new templates, and sample Regex Rules so
-  the tool never opens to an empty, confusing screen.
-- 🔄 **Auto-update, actually works now** — fixed a bug where the app could get stuck
-  redownloading the same update forever without ever actually installing it.
-- 🖱️ **Tree checkboxes are bigger and steadier** — the expand/collapse arrow got a fixed,
-  larger click area so it doesn't shift out from under your cursor between clicks.
-
-</details>
-
 ## 🔑 License
 
 Free to use under the terms in [LICENSE.md](LICENSE.md). Right-click the floating icon
