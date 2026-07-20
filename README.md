@@ -49,7 +49,8 @@ replace it!)
 
 ## 📖 How to use it
 
-A little floating buddy 🚂 with 5 buttons. Tap a section below to peek inside. 👇
+A little floating buddy 🚂 with a handful of buttons (plus an optional 🏷️ Symbol Tool
+button you can turn on from the right-click menu). Tap a section below to peek inside. 👇
 
 <details>
 <summary>🧰 The toolbar</summary>
@@ -93,7 +94,7 @@ Click the badge once to shrink the whole thing down to just itself:
 - **License status...** — opens the usage popup (see below).
 - **Run at Windows startup** — launch TIA Helper automatically when you log in.
 - **Show Symbol Tool button** — turn on the 🏷️ tag-table tool (off by default to keep the toolbar tidy).
-- **Sync export selection → import** — when on, whatever you check on the Export page is also copied into the Import page's selection. One global switch that applies to every project.
+- **Sync export → import** — a submenu with 3 modes (pick one): **Off** (no syncing), **Only checked** (checking a block on Export/Import adds it to the other side, but unchecking never removes anything — add-only), **Mirror** (checking *and* unchecking are copied both ways, so Export and Import always match exactly). Works in both directions now — check something in Import and it flows back into Export too.
 
 </details>
 
@@ -105,14 +106,18 @@ Right-click the Export button to pick which blocks/UDTs to export and where:
 ![Export popup](docs/images/export-popup.png)
 
 - Check the blocks/UDTs you want in the tree (checking a folder checks everything under
-  it).
+  it). Your checks are remembered per project, and which folders you left expanded/
+  collapsed is remembered too for as long as the app keeps running.
 - **Change...** picks the destination folder — TIA Helper auto-creates a subfolder named
   after your TIA project, so different projects never mix their files.
-- The icons above the tree are **Select all / Clear / Expand all / Collapse all**. The 🔄
-  checkbox syncs your Export selection straight into Import's own selection.
+- The icons above the tree are **Select all / Clear / Expand all / Collapse all**.
+- Opens instantly the second time onward — the block list is cached after the first
+  connect, and quietly refreshes itself in the background (including the moment right
+  after TIA Portal is connected) so you're never waiting on it.
 - Re-exporting only touches blocks that actually changed since the last export — nothing
   else gets re-written, so re-exporting a big project stays fast.
-- Click the export icon at the bottom to run it right now.
+- Click the export icon at the bottom to run it right now — it dims when there's nothing
+  selected or no destination set yet, same as the toolbar's own Export/Import button.
 
 </details>
 
@@ -128,6 +133,9 @@ Same picker, pointed at a local folder instead of your TIA project:
   handy right after editing it in your own editor.
 - **Auto mode** can watch every checked file and re-import automatically the instant you
   save it.
+- If **Sync export → import** (badge menu) isn't Off, checking/unchecking files here also
+  updates the Export page's own selection, following whichever of the two sync modes
+  you picked.
 
 </details>
 
@@ -226,6 +234,33 @@ learn the whole protocol in one read.
 server — if your AI client speaks MCP natively (Claude Desktop, Claude Code, etc.), it
 can call TIA Helper's actions as real tools instead of shell commands, with no scripting
 needed on your end. Same underlying protocol, same safety rules, just a different way in.
+
+</details>
+
+## 🆕 Recent updates
+
+<details>
+<summary>See what's changed lately (v1.0.16 → v1.0.24)</summary>
+
+- 🔁 **Two-way sync, 3 modes** — Export ↔ Import selection sync now works both directions,
+  with a proper 3-way mode picker (Off / only-checked / full mirror) in the badge menu
+  instead of a single on/off switch.
+- 🌳 **Export opens instantly** — the block list is cached after your first connect, so
+  right-clicking Export no longer waits on TIA Portal every single time. It quietly
+  refreshes itself in the background, including right after you connect.
+- 🗂️ **Tree remembers what you expanded** — Export/Import/Custom all remember which
+  folders you left open, for as long as the app keeps running (still starts fresh/
+  collapsed the first time you open it after launching TIA Helper).
+- 🎨 **Toolbar colors, unified** — the round Export button now matches Export's own teal
+  color scheme (it used to clash with a leftover red), and Import/Custom's shared button
+  dims the same way Export's does when there's nothing queued yet.
+- 🏷️ **Symbol Tool** got a **🎓 Load Example** button (fills every tab with a complete
+  worked template on demand), a fix for adding new templates, and sample Regex Rules so
+  the tool never opens to an empty, confusing screen.
+- 🔄 **Auto-update, actually works now** — fixed a bug where the app could get stuck
+  redownloading the same update forever without ever actually installing it.
+- 🖱️ **Tree checkboxes are bigger and steadier** — the expand/collapse arrow got a fixed,
+  larger click area so it doesn't shift out from under your cursor between clicks.
 
 </details>
 
