@@ -106,10 +106,11 @@ Right-click the Export button to pick which blocks/UDTs to export and where:
 ![Export popup](docs/images/export-popup.png)
 
 - Check the blocks/UDTs you want in the tree (checking a folder checks everything under
-  it). Your checks are remembered per project, and which folders you left expanded/
-  collapsed is remembered too for as long as the app keeps running.
-- **Change...** picks the destination folder — TIA Helper auto-creates a subfolder named
-  after your TIA project, so different projects never mix their files.
+  it). Your checks, which folders you left expanded/collapsed, and even the tree's scroll
+  position are all remembered per project — and now survive a real app restart, not just
+  while the app keeps running.
+- Destination is auto-derived from your TIA project's own file location — a subfolder
+  named after your project, so different projects never mix their files.
 - The icons above the tree are **Select all / Clear / Expand all / Collapse all**.
 - Opens instantly the second time onward — the block list is cached after the first
   connect, and quietly refreshes itself in the background (including the moment right
@@ -118,6 +119,18 @@ Right-click the Export button to pick which blocks/UDTs to export and where:
   else gets re-written, so re-exporting a big project stays fast.
 - Click the export icon at the bottom to run it right now — it dims when there's nothing
   selected or no destination set yet, same as the toolbar's own Export/Import button.
+- **Multiple PLCs in one project?** A badge in the top-right corner (e.g. `PLC_1 (1/2)`)
+  lets you pick which PLC's tree you're looking at *and* which PLC(s) actually get covered
+  when Export runs — check more than one and a single Export run covers all of them:
+
+  ![PLC picker dropdown](docs/images/plc-dropdown.png)
+
+- **Right-click any block/UDT (or a whole folder) for a quick one-off menu** — export just
+  that item right now regardless of what's checked, or (for a single block/UDT) delete it
+  from the PLC entirely. Deleting asks you to type the block's name to confirm first —
+  there's no undo, so make sure you have your own project backup:
+
+  ![Right-click menu on a tree node](docs/images/node-context-menu.png)
 
 </details>
 
@@ -131,11 +144,22 @@ Same picker, pointed at a local folder instead of your TIA project:
 - Check a file to queue it for import.
 - Left-clicking the toolbar's Import button re-imports whichever file was last active —
   handy right after editing it in your own editor.
+- Right-click a file (or a whole folder) for the same one-off "import just this now"
+  shortcut Export has — no need to check it first.
 - **Auto mode** can watch every checked file and re-import automatically the instant you
   save it.
 - If **Sync export → import** (badge menu) isn't Off, checking/unchecking files here also
   updates the Export page's own selection, following whichever of the two sync modes
   you picked.
+
+> **Where imported blocks land**: TIA Portal's own API for generating a block from an SCL
+> file has no way to target a specific folder — it always lands at your PLC's top level
+> first. TIA Helper now automatically relocates it afterward to match the file's own
+> folder (e.g. a file at `Group_F\Utils_Queue\FC_X.scl` ends up in that same
+> `Group_F/Utils_Queue` group in TIA, creating the group if it doesn't exist yet) — this
+> only applies to the **Import** page (not Custom, whose folder has no set relationship
+> to your TIA structure). If the relocate step itself ever fails for some reason, the
+> block is safely restored to the top level rather than lost.
 
 </details>
 
