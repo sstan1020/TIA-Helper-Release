@@ -22,10 +22,10 @@ AI do it for you through the exact same interface a human uses. 🤖🔌
 | | |
 |---|---|
 | 📥 **Import** | Drop an SCL file straight into TIA Portal — generates or overwrites the block for you. |
-| 🛠️ **Compile** | One click, clean error/warning summary. No digging through TIA Portal's own UI. |
+| 🛠️ **Compile** | One click, clean error/warning summary. No digging through TIA Portal's own UI. Off by default, turn it on from the badge menu. |
 | 📤 **Export** | Any block or UDT → a plain SCL file, so an AI can read your code before touching it. |
-| 🏷️ **Symbol Tool** | Build a tag template once ("Motor" → Run/Fault/Speed), set an address rule, and generate a whole tag table in one click — no more hand-typing 50 nearly-identical tags. |
-| 🔁 **Auto mode** | Watch a file (or the whole project) — the moment something changes, it re-imports/re-exports itself. Zero clicks. |
+| 🏷️ **Symbol Tool** | Build a tag template once ("Motor" → Run/Fault/Speed), set an address rule, and generate a whole tag table in one click — no more hand-typing 50 nearly-identical tags. Off by default, turn it on from the badge menu. |
+| 🔁 **Auto mode** | Watch a file (or the whole project) — the moment something changes, it re-imports/re-exports itself. Zero clicks. Off by default, turn it on from the badge menu. |
 | 🧠 **AI-native** | Every button doubles as a pipe command. Your AI assistant can list, attach, import, compile, and report back — the same loop you do, on autopilot. |
 | 🔒 **Downloads stay yours** | Writing to real hardware always needs a manual click + confirmation in the app. The AI can tell you what it *would* do — it can never do it for you. |
 
@@ -49,29 +49,35 @@ replace it!)
 
 ## 📖 How to use it
 
-A little floating buddy 🚂 with a handful of buttons (plus an optional 🏷️ Symbol Tool
-button you can turn on from the right-click menu). Tap a section below to peek inside. 👇
+A little floating buddy 🚂. Manual Export/Import is all you see by default; Auto mode,
+Compile/Download, and the 🏷️ Symbol Tool are all one click away in the right-click menu
+when you want them. Tap a section below to peek inside. 👇
 
 <details>
 <summary>🧰 The toolbar</summary>
 
-A small floating column of buttons that stays on top of your other windows.
+A small floating column of buttons that stays on top of your other windows. By default
+it's just three things — Manual Export/Import covers the vast majority of day-to-day
+work, so that's all you see until you ask for more:
 
 ![Expanded toolbar](docs/images/toolbar-expanded.png)
-
-Top to bottom:
 
 1. **T badge** — drag to move the toolbar around, click (without dragging) to
    collapse/expand it, right-click for the license/settings menu.
 2. **Usage gauge** — click to see your license tier and how much usage quota is left.
 3. **Export / Import** (one shared slot — shows whichever you used last) — **left-click
-   runs it immediately**, **right-click** opens the picker.
-4. **Auto mode** (the eye 👁️) — left-click toggles it on/off, right-click picks the mode.
-5. **Run** (the checkmark ✔️) — left-click compiles/downloads, right-click for settings.
+   runs it immediately**, **right-click** opens the picker, **scroll the mouse wheel over
+   it** to quickly switch between Export/Import/Custom.
 
-Click the badge once to shrink the whole thing down to just itself:
+Click the badge once to shrink the whole thing down to just itself.
 
-![Collapsed toolbar](docs/images/toolbar-collapsed.png)
+**Auto mode and Compile/Download are hidden by default** — right-click the badge →
+**Toolbar buttons** to turn either one on if you need it:
+
+- **Auto mode** (the eye 👁️, once shown) — left-click toggles it on/off, right-click picks
+  the mode.
+- **Run** (the checkmark ✔️, once shown) — left-click compiles/downloads, right-click for
+  settings.
 
 **Keyboard shortcuts** (work globally, even while TIA Portal is focused): 🎹
 
@@ -93,8 +99,9 @@ Click the badge once to shrink the whole thing down to just itself:
 - **Import license...** — paste in the license file you were sent.
 - **License status...** — opens the usage popup (see below).
 - **Run at Windows startup** — launch TIA Helper automatically when you log in.
-- **Show Symbol Tool button** — turn on the 🏷️ tag-table tool (off by default to keep the toolbar tidy).
-- **Sync export → import** — a submenu with 3 modes (pick one): **Off** (no syncing), **Only checked** (checking a block on Export/Import adds it to the other side, but unchecking never removes anything — add-only), **Mirror** (checking *and* unchecking are copied both ways, so Export and Import always match exactly). Works in both directions now — check something in Import and it flows back into Export too.
+- **Toolbar buttons** — a submenu to turn on the buttons that are hidden by default: Symbol
+  Tool, Auto mode, Compile/Download.
+- **Sync export → import** — a submenu with 3 modes (pick one): **Off** (no syncing), **Only checked** (checking a block on Export/Import adds it to the other side, but unchecking never removes anything — add-only), **Mirror** (checking *and* unchecking are copied both ways, so Export and Import always match exactly). Works in both directions — check something in Import and it flows back into Export too.
 
 </details>
 
