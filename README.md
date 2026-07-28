@@ -249,23 +249,81 @@ Right-click the checkmark button:
 <details>
 <summary>🤝 Working with an AI assistant</summary>
 
-TIA Helper exposes every one of these actions over a local named pipe, so an AI coding
-assistant can drive it exactly like you do by clicking — list running TIA Portal
-instances, attach to the right project, import code it just wrote, compile, and read back
-the result. Ask your AI assistant to check whether TIA Helper is running if you want to
-try this.
+TIA Helper opens a local **named pipe** called `tia_helper` the moment it starts — think
+of it as a phone line only your AI assistant needs to know about. Every button in the
+toolbar (list projects, attach, import, compile, export...) is also a one-line command
+your AI can send down that pipe, get an answer back, and hang up. There are two ways for
+an AI to actually use it — pick whichever fits your AI tool. Both talk to the exact same
+pipe, so both are equally capable.
 
-**Downloading to hardware is always a manual step** — an AI assistant can tell you what a
-download would target, but it can never trigger one itself.
+### Option 1: MCP (easiest — no scripting, if your AI supports it)
 
-📄 See **[docs/NAMED_PIPE.md](docs/NAMED_PIPE.md)** for the full command reference,
-example scripts, and safety rules — point your AI assistant at that file and it can
-learn the whole protocol in one read.
+If your AI client speaks **MCP** (Model Context Protocol) — Claude Code, Claude Desktop,
+and others do — this is the simplest way in: TIA Helper's actions show up as real, native
+tools (`tia_status`, `tia_compile`, `tia_export`, ...) that the AI can call directly, the
+same way it'd call any of its other built-in tools.
 
-**Prefer MCP?** There's also a ready-made [MCP (Model Context Protocol)](docs/MCP.md)
-server — if your AI client speaks MCP natively (Claude Desktop, Claude Code, etc.), it
-can call TIA Helper's actions as real tools instead of shell commands, with no scripting
-needed on your end. Same underlying protocol, same safety rules, just a different way in.
+**Setup (Claude Code example, one-time only):**
+
+```powershell
+# 1. Make sure Node.js is installed (node --version to check)
+# 2. Download the mcp-server folder from this repo, then:
+cd "path\to\mcp-server"
+npm install
+claude mcp add tiahelper -- node "path\to\mcp-server\index.js"
+```
+
+That's it. From then on, just talk to your AI normally:
+
+> **You:** Compile the current PLC program and tell me if there are any errors.
+>
+> **AI:** *(calls the `tia_compile` tool)* → Compile finished: 0 errors, 2 warnings.
+> Here's what the warnings say...
+
+No commands to type, no paths to remember after setup. Full walkthrough with screenshots:
+**[docs/MCP.md](docs/MCP.md)**.
+
+### Option 2: Named pipe directly (works with any AI that can run a terminal command)
+
+If your AI tool can execute shell/PowerShell commands but doesn't speak MCP, download
+[`tia.ps1`](tia.ps1) from this repo and just ask your AI in plain language — it'll figure
+out which command to run:
+
+> **You:** What TIA project is currently open?
+>
+> **AI:** *(runs `powershell -File tia.ps1 -Command "status"`)* → You have
+> `X_ZIP.ap20` open, connected to PLC `PLC_1`.
+
+You can also try it yourself directly in a terminal, to see exactly what the AI sees:
+
+```powershell
+powershell -File tia.ps1 -Command "list"
+# 0: D:\Projects\X_ZIP\X_ZIP.ap20
+
+powershell -File tia.ps1 -Command "attach X_ZIP"
+# Connected: D:\Projects\X_ZIP\X_ZIP.ap20 | PLC: PLC_1
+
+powershell -File tia.ps1 -Command "compile"
+# Compile finished: 0 errors 0 warnings
+```
+
+Full command reference, more examples, and safety rules:
+**[docs/NAMED_PIPE.md](docs/NAMED_PIPE.md)**.
+
+### What your AI can and can't do
+
+| ✅ Can do (no confirmation needed) | 🔒 Can't do (needs you, in the app) |
+|---|---|
+| List/attach to TIA projects | **Download to real hardware** — always your click + your confirmation in the app window |
+| Import SCL code it wrote, generate/overwrite blocks | |
+| Compile and read back errors/warnings | |
+| Export existing blocks (SCL, or lossless XML for Ladder/FBD) | |
+| Preview what a download *would* target, list available interfaces | |
+| Switch between projects/PLCs if you have several open | |
+
+Writing to real hardware is deliberately the one thing no AI path can trigger — it always
+needs your own click on the **Run** button and your own confirmation in the popup that
+follows, no matter how you're talking to TIA Helper.
 
 </details>
 

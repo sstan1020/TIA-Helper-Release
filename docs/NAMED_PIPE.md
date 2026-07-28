@@ -102,9 +102,16 @@ powershell -File tia.ps1 -Command "compile"
 | 看看现在有哪些 TIA 项目开着 | `list` | 不需要 |
 | 连接到指定的项目 | `attach <关键词>` | 不需要 |
 | 自动连接（只有一个项目开着时才行） | `autoattach` | 不需要 |
+| 连接到项目，并且**保持连着**（不用完就断） | `pin <关键词>` | 不需要 |
+| 取消"保持连接"，并断开这个项目 | `unpin <关键词>` | 不需要 |
+| 看看现在有哪些项目在"保持连接"状态 | `listpinned` | 不需要 |
 | 看看现在连的是哪个项目/PLC | `status` | 不需要 |
 | 断开连接（TIA Portal 本身不会关） | `detach` | 不需要 |
+| 看看这台电脑的授权码（硬件码） | `hwcode` | 不需要 |
 | 列出所有可以导出的程序块 | `exportlist` | 不需要 |
+| 列出这个项目里所有的 PLC（一个项目可能有好几个 PLC） | `listplcs` | 不需要 |
+| 切换要操作哪个 PLC（项目里有多个 PLC 时用） | `selectplc <编号或名字>` | 不需要 |
+| 看看导出/导入现在默认存到哪个文件夹 | `exportdestination` | 不需要 |
 | 预览一下"下载"会做什么（不会真的下载） | `downloadpreview` | 不需要 |
 | 列出可用的下载接口 | `downloadinterfaces` | 不需要 |
 | 导入一段代码（.scl 文件）到 PLC | `import <文件路径>` | **需要** |
@@ -114,6 +121,57 @@ powershell -File tia.ps1 -Command "compile"
 | 编译 PLC 程序 | `compile` | **需要** |
 | 选择用哪个下载接口 | `selectdownloadinterface <编号>` | **需要** |
 | **真正下载到硬件** | ❌ 永远拒绝，见下方安全规则 | — |
+
+---
+
+## 第五点五步：两个进阶场景的完整例子
+
+### 场景一：同时开着好几个 TIA 项目，来回切换
+
+假设你电脑上同时开着两个 TIA 项目——一个叫 `X_ZIP`，一个叫 `Project1`。正常情况下
+每个命令用完就自动断开，下次用又要重新连一次；如果你会**频繁在两个项目之间切换**，
+可以用 `pin` 把某个项目"钉住"，让它一直保持连接，下次用瞬间就能接上：
+
+```powershell
+powershell -File tia.ps1 -Command "pin X_ZIP"
+# Connected: ...X_ZIP.ap20 | PLC: PLC_1 (pinned - will stay connected)
+
+powershell -File tia.ps1 -Command "pin Project1"
+# Connected: ...Project1.ap20 | PLC: xPLC_1x (pinned - will stay connected)
+
+powershell -File tia.ps1 -Command "listpinned"
+# D:\...\X_ZIP.ap20 ;; C:\...\Project1.ap20
+
+powershell -File tia.ps1 -Command "attach X_ZIP"
+# Connected: ...X_ZIP.ap20 | PLC: PLC_1        （因为已经pin过了，这次几乎是瞬间连上）
+
+powershell -File tia.ps1 -Command "unpin Project1"
+# Unpinned: C:\...\Project1.ap20
+```
+
+**什么时候需要这个？** 如果你只操作一个项目，完全不需要管 `pin`——正常用 `attach`
+就行，用完自动断开，这是默认行为。只有当你发现自己在两三个项目之间频繁跳来跳去，
+每次都要重新连接觉得慢，才值得用 `pin` 把常用的几个项目都钉住。
+
+### 场景二：一个项目里有好几个 PLC
+
+有些项目不是只有一个 PLC，而是好几个 PLC 设备放在同一个项目里。这种情况下，
+`export`/`import`/`compile` 默认只会操作"当前选中"的那一个 PLC，需要先看看有哪些、
+再切换：
+
+```powershell
+powershell -File tia.ps1 -Command "listplcs"
+# 0: PLC_1 (active) ;; 1: PLC_2
+
+powershell -File tia.ps1 -Command "selectplc PLC_2"
+# Selected PLC: PLC_2
+
+powershell -File tia.ps1 -Command "exportlist"
+# 现在列出来的就是 PLC_2 的程序块了，不再是 PLC_1 的
+```
+
+如果项目只有一个 PLC（绝大多数情况），完全不需要管这几个命令——`listplcs` 会
+直接告诉你"只有一个"，AI 也不会主动问你选哪个。
 
 ---
 

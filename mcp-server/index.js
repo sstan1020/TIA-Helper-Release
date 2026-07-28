@@ -36,6 +36,30 @@ const tools = [
     inputSchema: { type: "object", properties: {} },
   },
   {
+    name: "tia_pin",
+    description:
+      "Connect to a project (same keyword rules as tia_attach) and keep it connected across later calls instead of disconnecting afterward. Useful when switching back and forth between several open TIA Portal instances - a later tia_attach/tia_pin to the same project reconnects instantly instead of paying a fresh connect cost.",
+    inputSchema: {
+      type: "object",
+      properties: { keyword: { type: "string", description: "Keyword matching part of the project path, or a numeric index from tia_list" } },
+      required: ["keyword"],
+    },
+  },
+  {
+    name: "tia_unpin",
+    description: "Stop keeping a previously-pinned project connected, and disconnect it now.",
+    inputSchema: {
+      type: "object",
+      properties: { keyword: { type: "string", description: "Keyword matching part of the project path, or a numeric index from tia_list" } },
+      required: ["keyword"],
+    },
+  },
+  {
+    name: "tia_listpinned",
+    description: "List every project currently kept pinned (connected) via tia_pin.",
+    inputSchema: { type: "object", properties: {} },
+  },
+  {
     name: "tia_status",
     description: "Get the currently connected project, PLC name, and current SCL file.",
     inputSchema: { type: "object", properties: {} },
@@ -46,8 +70,32 @@ const tools = [
     inputSchema: { type: "object", properties: {} },
   },
   {
+    name: "tia_hwcode",
+    description: "Get this computer's hardware code - the identifier used for licensing (shown to the user if they need to request a license).",
+    inputSchema: { type: "object", properties: {} },
+  },
+  {
     name: "tia_exportlist",
     description: "List every block/UDT name that tia_export can target, indexed.",
+    inputSchema: { type: "object", properties: {} },
+  },
+  {
+    name: "tia_listplcs",
+    description: "List every PLC device in the currently attached project, indexed - useful when a project has more than one PLC.",
+    inputSchema: { type: "object", properties: {} },
+  },
+  {
+    name: "tia_selectplc",
+    description: "Switch which PLC subsequent commands (export/import/compile/download) target, within the currently attached project. Use an index from tia_listplcs, or the PLC's device name.",
+    inputSchema: {
+      type: "object",
+      properties: { plc: { type: "string", description: "PLC index (from tia_listplcs) or device name" } },
+      required: ["plc"],
+    },
+  },
+  {
+    name: "tia_exportdestination",
+    description: "Read-only: where the Manual Export/Import/Custom UI's own auto-derived destination folder currently resolves to, so an AI caller knows where files will land before running an export/import.",
     inputSchema: { type: "object", properties: {} },
   },
   {
@@ -132,9 +180,16 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     case "tia_list": command = "list"; break;
     case "tia_attach": command = `attach ${args.keyword}`; break;
     case "tia_autoattach": command = "autoattach"; break;
+    case "tia_pin": command = `pin ${args.keyword}`; break;
+    case "tia_unpin": command = `unpin ${args.keyword}`; break;
+    case "tia_listpinned": command = "listpinned"; break;
     case "tia_status": command = "status"; break;
     case "tia_detach": command = "detach"; break;
+    case "tia_hwcode": command = "hwcode"; break;
     case "tia_exportlist": command = "exportlist"; break;
+    case "tia_listplcs": command = "listplcs"; break;
+    case "tia_selectplc": command = `selectplc ${args.plc}`; break;
+    case "tia_exportdestination": command = "exportdestination"; break;
     case "tia_import": command = `import ${quote(args.path)}`; break;
     case "tia_export": command = `export ${args.blockName} ${quote(args.destinationPath)}`; break;
     case "tia_exportxml": command = `exportxml ${args.blockName} ${quote(args.destinationPath)}`; break;
