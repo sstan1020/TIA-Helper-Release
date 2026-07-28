@@ -314,14 +314,17 @@ Full command reference, more examples, and safety rules:
 
 | ✅ Can do (no confirmation needed) | 🔒 Can't do (needs you, in the app) |
 |---|---|
-| List/attach to TIA projects | **Download to real hardware** — always your click + your confirmation in the app window |
+| List/attach to TIA projects | **Actually writing to hardware** — always your click + your confirmation in the app window |
 | Import SCL code it wrote, generate/overwrite blocks | |
 | Compile and read back errors/warnings | |
 | Export existing blocks (SCL, or lossless XML for Ladder/FBD) | |
 | Preview what a download *would* target, list available interfaces | |
+| **Prepare** a download — pick which PG/PC interface to use | |
 | Switch between projects/PLCs if you have several open | |
 
-Writing to real hardware is deliberately the one thing no AI path can trigger — it always
+Your AI can do everything *around* a download — check what it would target, list
+available interfaces, even pick and save which one to use — right up until the actual
+write. That one last step is deliberately the only thing no AI path can trigger: it always
 needs your own click on the **Run** button and your own confirmation in the popup that
 follows, no matter how you're talking to TIA Helper.
 
