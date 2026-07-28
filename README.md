@@ -26,6 +26,7 @@ AI do it for you through the exact same interface a human uses. 🤖🔌
 | 📤 **Export** | Any block or UDT → a plain SCL file, so an AI can read your code before touching it. |
 | 🏷️ **Symbol Tool** | Build a tag template once ("Motor" → Run/Fault/Speed), set an address rule, and generate a whole tag table in one click — no more hand-typing 50 nearly-identical tags. Off by default, turn it on from the badge menu. |
 | 🔁 **Auto mode** | Watch a file (or the whole project) — the moment something changes, it re-imports/re-exports itself. Zero clicks. Off by default, turn it on from the badge menu. |
+| 📋 **Task queue** | Click Export/Import as fast as you want — everything queues up and runs in order, no lost clicks. A little popup shows you what's running, what's next, and what already finished. |
 | 🧠 **AI-native** | Every button doubles as a pipe command. Your AI assistant can list, attach, import, compile, and report back — the same loop you do, on autopilot. |
 | 🔒 **Downloads stay yours** | Writing to real hardware always needs a manual click + confirmation in the app. The AI can tell you what it *would* do — it can never do it for you. |
 
