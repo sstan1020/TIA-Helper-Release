@@ -84,9 +84,7 @@ Click the badge once to shrink the whole thing down to just itself.
 
 | Shortcut | Does |
 |---|---|
-| `Alt+Z` | Opens the Export page |
-| `Alt+X` | Opens the Import page |
-| `Alt+C` | Opens the Custom Import page |
+| `Alt+Z` / `Alt+X` / `Alt+C` | Clicks whichever Manual button (Export/Import) is currently showing on the toolbar - same as clicking it yourself |
 | `Alt+D` | Collapses/expands the toolbar |
 
 </details>
